@@ -8,18 +8,22 @@ function wrap(wordToWrap, width) {
     return wordToWrap;
 }
 
-describe("First test", function(){
+describe("Wrap", function(){
 
-    it("wrap empty string", function(){
+    it("will process an empty string", function(){
         expect(wrap('', 0)).to.eql('');
     });
 
-    it("word does not need wrapping", function(){
+    it("processes a word that does not need wrapping", function(){
         expect(wrap('hello', 5)).to.eql('hello');
     });
 
-    it("word needs wrapping", function(){
+    it("processes a word that needs wrapping", function(){
         expect(wrap('hello', 3)).to.eql('hel\nlo');
+    });
+
+    it("processes a word that needs to be wrapped twice", function(){
+        expect(wrap('hello', 2)).to.eql('he\nll\no');
     });
 
 });
