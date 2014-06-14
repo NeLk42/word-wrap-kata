@@ -1,11 +1,20 @@
 var expect = require('chai').expect;
 
+function recursiveWrap(text, width){
+    if (width < text.length){
+        return text.substr(0, width) + "\n" + recursiveWrap(text.substr(width), width);
+    }
+    return text;
+}
+
 function wrap(wordToWrap, width) {
     if(!wordToWrap) return '';
     if (width < wordToWrap.length){
-        return wordToWrap.substr(0, width) + "\n" + wordToWrap.substr(width);
+        return recursiveWrap(wordToWrap, width);
     }
-    return wordToWrap;
+    else {
+        return wordToWrap;
+    }
 }
 
 describe("Wrap", function(){
